@@ -23,36 +23,40 @@ let baseMaps = {
 
 // Create the map object with center, zoom level and default layer.
 let map = L.map('mapid', {
-    center: [44, -80],
-    zoom: 2,
+    center: [43.7, -79.3],
+    zoom: 11,
     layers: [light]
 })
 
 // Pass our map layers into our layers control and add the layers control to the map.
 L.control.layers(baseMaps).addTo(map);
 
-// Then we add our 'graymap' tile layer to the map.
-// streets.addTo(map);
-
 // Accessing the airport GeoJSON URL
-let torontoData = "https://raw.githubusercontent.com/fcberni/Mapping_Earthquakes/Mapping_GeoJSON_Linestrings/torontoRoutes.json";
+let torontoHoods = "https://raw.githubusercontent.com/fcberni/Mapping_Earthquakes/Mapping_GeoJSON_Polygons/torontoNeighborhoods.json";
 
-// Create a style for the lines.
-let myStyle = {
-    color: "#ffffa1",
-    weight: 2
-}
+// // Create a style for the lines.
+// let myStyle = {
+//     color: "#ffffa1",
+//     weight: 2
+// }
+
+// // Grabbing our GeoJSON data. Using d3.json() method
+// d3.json(torontoHoods).then(function(data) {
+//     console.log(data);
+// // Creating a GeoJSON layer with the retrieved data.
+// L.geoJson(data, {
+//     style: myStyle,
+//     onEachFeature: function(feature, layer) {
+//         layer.bindPopup("<h3> Airline: " + feature.properties.airline + "</h3> <hr><h3> Destination: "
+//         + feature.properties.dst + "</h3>");
+//     }
+// }) 
+// .addTo(map);
+// });
 
 // Grabbing our GeoJSON data. Using d3.json() method
-d3.json(torontoData).then(function(data) {
+d3.json(torontoHoods).then(function(data) {
     console.log(data);
 // Creating a GeoJSON layer with the retrieved data.
-L.geoJson(data, {
-    style: myStyle,
-    onEachFeature: function(feature, layer) {
-        layer.bindPopup("<h3> Airline: " + feature.properties.airline + "</h3> <hr><h3> Destination: "
-        + feature.properties.dst + "</h3>");
-    }
-}) 
-.addTo(map);
+L.geoJson(data).addTo(map);
 });
