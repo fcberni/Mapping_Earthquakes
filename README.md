@@ -5,3 +5,5 @@ Purpose of this project is to create a map using HTML, JavaScript and CSS that d
 ## Full Map
 
 ![complete_map.png](complete_map.png)
+
+To see full interactive map please git clone the repository and open the HTML file under the Earthquake Challenge directory on your local machine.
